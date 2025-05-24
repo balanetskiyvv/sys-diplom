@@ -12,11 +12,19 @@
     * [Дополнительно](#Дополнительно)
 # Выполнение работы
 ### Terraform
-* [Инфраструктурв](#infrastructure)
-* [Сеть](#network)
-* [Группы безопасности](#securitygroup)
-* [Сетевой балансировщик](#load-balancer)
-* [Резервное копирование](#snapshots)
+* [Инфраструктура](#infrastructure)
+   * [Сеть](#network)
+   * [Группы безопасности](#securitygroup)
+   * [Сетевой балансировщик](#load-balancer)
+   * [Резервное копирование](#snapshots)
+### Ansible
+* [Установка и настройка ansible](#ansiblecfg)
+* [Веб-серверы NGINX](#webnginx)
+* [Мониторинг](#zabbix)
+* Логи
+   * [Elasticsearch](#elasticsearch)
+   * [Kibana](#kibana)
+   * [Filebeat](#filebeat)
 
 ---------
 
@@ -106,7 +114,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Создаем 1 VPC с внутренними и публичными подсетями, таблицу маршрутизации и NAT-шлюз для доступа к интернету виртуальным машинам, находящимся внутри сети за Бастионом, который будет выполнять роль JumpHost.
 
-<img width="1609" alt="изображение" src="https://github.com/user-attachments/assets/6055ae9e-f0c9-4d70-a2ab-cdad8eb46b56" />
+<img width="1313" alt="изображение" src="https://github.com/user-attachments/assets/512ee9bd-b844-4908-a0dc-bec6c2b12ad4" />
 
 ### <a id="securitygroup">Группы безопасности</a>
 
@@ -170,5 +178,77 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Создаем в terraform блок с расписанием snapshots
 
-<img width="400" alt="изображение" src="https://github.com/user-attachments/assets/86148085-d2f6-42d3-9404-b5a975ad886a" />
+<img width="735" alt="изображение" src="https://github.com/user-attachments/assets/6ee3c44a-787d-4de9-979b-869d1cb1f99d" />
 
+Проверяем на следующий день что снимки создались по расписанию
+
+xxxSCREEN на следующий день
+
+## Ansible
+
+### <a id="ansiblecfg">Установка и настройка ansible</a>
+
+Устанавливаем **Ansible** на локальном мастер хосте и настраиваем его работу через **bastion**
+
+**файлы конфигурации**
+
+ansible.cfg
+```
+[defaults]
+inventory = ./hosts.ini
+host_key_checking = False
+```
+
+**файл inventory**
+
+Создаем файл hosts.ini с использованием FQDN имен ВМ вместо ip адресов
+```
+[all:vars]
+ansible_ssh_user=balanetskiyvv
+ansible_ssh_private_key_file=/Users/vasiliybalanetskiy/.ssh/id_ed25519
+ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q balanetskiyvv@158.160.33.144"'
+  
+[webservers]
+web-1 ansible_host=web-1.ru-central1.internal
+web-2 ansible_host=web-2.ru-central1.internal
+  
+[logservers]
+elastic_srv ansible_host=elasticvm.ru-central1.internal
+kibana_srv ansible_host=kibana-host.ru-central1.internal
+
+[monitoring]
+zabbix_srv ansible_host=zabbix-server.ru-central1.internal
+```
+
+**Проверяем доступность ВМ используя утилиту ping**
+
+<img width="1012" alt="изображение" src="https://github.com/user-attachments/assets/46faf49e-0924-4d7b-89b8-cccbd2622f4a" />
+
+### <a id="webnginx">Веб-серверы NGINX</a>
+
+**Установка NGINX**
+
+<img width="1014" alt="изображение" src="https://github.com/user-attachments/assets/edf92d1e-8840-405a-9ffe-bac8cc368812" />
+
+проверяем доступность сайта в браузере по публичному ip адресу Load Balancer
+
+<img width="506" alt="изображение" src="https://github.com/user-attachments/assets/1ec95230-2559-4498-b141-78755720cf73" />
+
+делаем запрос `curl -v http://158.160.186.208:80`
+
+<img width="876" alt="изображение" src="https://github.com/user-attachments/assets/95686229-ec90-4488-bd50-25b87251e7fd" />
+
+проверяем работу Load Balancer в веб консоли YC, при изменении backend_ip убеждаемся что балансировщик работает
+
+<img width="741" alt="изображение" src="https://github.com/user-attachments/assets/ea3eb435-2c80-4823-91f9-b410c97a22b2" />
+
+### <a id="zabbix">Мониторинг</a>
+
+**Установка Zabbix сервера**
+
+<img width="1016" alt="изображение" src="https://github.com/user-attachments/assets/717feff8-ddb7-44ab-b4b0-ac0fc08b7a64" />
+
+проверяем доступность frontend zabbix сервера
+
+
+!
