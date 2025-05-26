@@ -26,6 +26,11 @@
    * [Kibana](#kibana)
    * [Filebeat](#filebeat)
 
+**Ссылки на ресурсы**
+[Сайт](http://158.160.101.91/)
+[Kibana](http://)
+[Zabbix]()
+
 ---------
 
 ## <a id="Задача">Задача</a>
@@ -107,7 +112,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 После завершения работы terraform проверяем в web консоли Yandex Cloud развернутую инфраструктуру.  
 Серверы WEB-1 и WEB-2 созданы в разных зонах.
 
-<img width="1609" alt="изображение" src="https://github.com/user-attachments/assets/673c90c3-e1dc-40dd-9daa-6bbd50b2f83b" />
+screen
 
 ### <a id="network">Сеть</a>
 **VPC и подсети**
