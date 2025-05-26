@@ -181,7 +181,9 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Проверяем на следующий день что снимки создались по расписанию
 
-xxxSCREEN на следующий день
+<img width="1399" alt="изображение" src="https://github.com/user-attachments/assets/3785d72c-7d1b-48f0-9cdd-fd891e51caa7" />
+
+<img width="1625" alt="изображение" src="https://github.com/user-attachments/assets/068d4714-2cde-47df-bca3-2a814e7118c7" />
 
 ## Ansible
 
@@ -257,7 +259,7 @@ zabbix_srv ansible_host=zabbix-server.ru-central1.internal
 
 <img width="1018" alt="изображение" src="https://github.com/user-attachments/assets/41bb84e9-1826-4b7a-bb64-de4eda1bd2ef" />
 
-Устанавливаем Zabbix agent на веб-серверы
+**Устанавливаем Zabbix agent на веб-серверы**
 
 <img width="821" alt="изображение" src="https://github.com/user-attachments/assets/373198c4-936e-44f4-98a2-d819d11a2023" />
 
@@ -271,7 +273,56 @@ WEB-2
 
 Добавляем хосты используя FQDN имена в zabbix сервер и настраиваем дашборды
 
-<img width="1499" alt="изображение" src="https://github.com/user-attachments/assets/7b5bb082-8580-4590-b57f-9284b4a0ef99" />
+<img width="1501" alt="изображение" src="https://github.com/user-attachments/assets/f1591dc7-63b2-4feb-92b5-2916354a34cb" />
 
+<img width="1485" alt="изображение" src="https://github.com/user-attachments/assets/d7d7cc61-7836-4514-a8da-fa8c98c7204e" />
 
-!
+<img width="1482" alt="изображение" src="https://github.com/user-attachments/assets/defcbc1c-353c-4fcb-80eb-3f5d847ea562" />
+
+## Логи
+
+### <a id="elasticsearch">Elasticsearch</a>
+
+**Устанавливаем Elasticsearch**
+
+<img width="1016" alt="изображение" src="https://github.com/user-attachments/assets/cdd40640-8f5b-4607-ba4c-7df8a9158067" />
+
+Проверяем статус Elasticsearch
+
+<img width="1011" alt="изображение" src="https://github.com/user-attachments/assets/bffba47b-81ad-4a17-8690-926303d162a3" />
+
+### <a id="kibana">Kibana</a>
+
+**Устанавливаем Kibana**
+
+<img width="1016" alt="изображение" src="https://github.com/user-attachments/assets/d450a155-a734-4210-835b-b7f4d38acb19" />
+
+Проверяем статус Kibana
+
+<img width="1010" alt="изображение" src="https://github.com/user-attachments/assets/437c03fe-03fd-4497-ab01-f6015f03ae13" />
+
+<img width="1680" alt="изображение" src="https://github.com/user-attachments/assets/6bbe925a-cb3f-4896-8450-89d09dd1cf3c" />
+
+<img width="1003" alt="изображение" src="https://github.com/user-attachments/assets/baa23a2a-4986-4550-8f21-b3fdcabfb9d8" />
+
+### <a id="filebeat">Filebeat</a>
+
+**Устанавливаем Filebeat**
+
+<img width="1016" alt="изображение" src="https://github.com/user-attachments/assets/8f9b77ae-9998-4743-abd5-e89b870727b4" />
+
+Проверяем статус filebeat на веб-серверах
+
+WEB-1
+<img width="1003" alt="изображение" src="https://github.com/user-attachments/assets/77340e0a-bb35-4a21-8ddc-9381cce29959" />
+
+<img width="999" alt="изображение" src="https://github.com/user-attachments/assets/6cde1cc9-559e-4e58-ace4-dad4e9697632" />
+
+WEB-2
+<img width="1004" alt="изображение" src="https://github.com/user-attachments/assets/143cf19a-3c71-47a4-b9cd-536ca81bd22d" />
+
+<img width="998" alt="изображение" src="https://github.com/user-attachments/assets/b0c4ce1d-9b2a-43ca-a147-6c2a541f0a3b" />
+
+Проверяем что Filebeat отправляет логи веб-серверов в Elasticsearch
+
+<img width="1679" alt="изображение" src="https://github.com/user-attachments/assets/728c6bda-76c2-4f99-be48-80814217bf62" />
