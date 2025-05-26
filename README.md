@@ -157,8 +157,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 <img width="716" alt="изображение" src="https://github.com/user-attachments/assets/ab5adac3-51ce-459e-a195-220b0b3a33d3" />
 
-!!!!#!#
-!!!!##!#!##xxxSCREEN проверки состояний load balncer
+<img width="928" alt="изображение" src="https://github.com/user-attachments/assets/f590b245-cf34-48ab-b599-1d3dd1cd4fda" />
 
 **Создаем HTTP-router**
 
@@ -246,9 +245,33 @@ zabbix_srv ansible_host=zabbix-server.ru-central1.internal
 
 **Установка Zabbix сервера**
 
-<img width="1016" alt="изображение" src="https://github.com/user-attachments/assets/717feff8-ddb7-44ab-b4b0-ac0fc08b7a64" />
+Установливаем postgresql и создаем пользователя zabbix
+
+<img width="1017" alt="изображение" src="https://github.com/user-attachments/assets/50b997d5-55a1-4e4f-a1b3-b1d4c6c3f791" />
+
+Устанавливаем zabbix server
+
+<img width="1012" alt="изображение" src="https://github.com/user-attachments/assets/9e44ba13-e092-4d26-afbf-2cb27cc59877" />
 
 проверяем доступность frontend zabbix сервера
+
+<img width="1018" alt="изображение" src="https://github.com/user-attachments/assets/41bb84e9-1826-4b7a-bb64-de4eda1bd2ef" />
+
+Устанавливаем Zabbix agent на веб-серверы
+
+<img width="821" alt="изображение" src="https://github.com/user-attachments/assets/373198c4-936e-44f4-98a2-d819d11a2023" />
+
+Проверяем статус служб zabbix agent на web серверах
+
+WEB-1
+<img width="781" alt="изображение" src="https://github.com/user-attachments/assets/10aa0e99-e09b-428b-b274-8ef69e1ce906" />
+
+WEB-2
+<img width="784" alt="изображение" src="https://github.com/user-attachments/assets/77656d4e-0eb1-4d06-85dc-ed0878291f5f" />
+
+Добавляем хосты используя FQDN имена в zabbix сервер и настраиваем дашборды
+
+<img width="1499" alt="изображение" src="https://github.com/user-attachments/assets/7b5bb082-8580-4590-b57f-9284b4a0ef99" />
 
 
 !
