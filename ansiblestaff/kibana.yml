@@ -1,0 +1,26 @@
+---
+- name: install and configure kibana
+  hosts: kibana_srv
+  become: yes
+  vars:
+    elastic_httphost: elasticvm.ru-central1.internal:9200
+  tasks:
+
+    - name: install pkg kibana
+      apt:
+        deb: "https://mirror.yandex.ru/mirrors/elastic/7/pool/main/k/kibana/kibana-7.15.1-amd64.deb"
+    
+    - name: copy configure file kibana
+      template:
+        src: ./kibana.yml.j2
+        dest: /etc/kibana/kibana.yml
+
+    - name: daemon reload
+      systemd:
+        daemon_reload: true
+
+    - name: restart kibana
+      service:
+        name: kibana
+        state: restarted
+        enabled: yes

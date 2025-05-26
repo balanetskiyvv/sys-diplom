@@ -1,0 +1,19 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+    - /var/log/nginx/access.log
+    - /var/log/nginx/error.log
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+setup.template.settings:
+  index.number_of_shards: 1
+
+setup.kibana:
+  hosts: ["{{kibana_addr}}"]
+
+output.elasticsearch:
+  hosts: ["{{elastic_addr}}"]

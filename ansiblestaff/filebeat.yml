@@ -1,0 +1,27 @@
+---
+- name: Install Filebeat
+  hosts: webservers
+  become: yes
+  vars:
+    kibana_addr: kibana-host.ru-central1.internal:5601
+    elastic_addr: elasticvm.ru-central1.internal:9200
+
+  tasks:
+    - name: install filebeat
+      apt:
+        deb: "https://mirror.yandex.ru/mirrors/elastic/7/pool/main/f/filebeat/filebeat-7.15.1-amd64.deb"
+
+    - name: configure filebeat
+      template:
+        src: ./filebeat.yml.j2
+        dest: /etc/filebeat/filebeat.yml
+
+    - name: daemon reload
+      systemd:
+        daemon_reload: true
+
+    - name: restart filebeat
+      service:
+        name: filebeat
+        enabled: true
+        state: restarted

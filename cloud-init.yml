@@ -1,0 +1,10 @@
+#cloud-config
+users:
+  - name: balanetskiyvv
+    groups: sudo
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    create-home: true
+    home: /home/balanetskiyvv
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSQA24ei82rhNIMG/RuxSj2YkRhxCHjD26r+HZ7KyOi vasiliybalanetskiy@MacBook-Pro-VASILIY.local

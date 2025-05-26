@@ -1,0 +1,24 @@
+---
+- name: Install Nginx on webservers
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Creating web page
+      copy:
+        content: "<html><head><title>Netology diplom BalanetskiyVV</title></head><body><h1>Netology diplom BalanetskiyVV</h1></body></html>"
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+
+    - name: Restart nginx
+      service:
+        name: nginx
+        enabled: true
+        state: restarted

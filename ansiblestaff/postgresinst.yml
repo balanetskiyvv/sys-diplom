@@ -1,0 +1,26 @@
+---
+- hosts: monitoring
+  become: yes
+  roles:
+    - andrelohmann.postgresql
+  vars:
+    postgresql_version: 14
+    postgresql_databases:
+    - name: zabbix
+      encoding: UTF-8
+      owner: zabbix
+      state: present
+      schemas:
+        - name: public
+          state: present
+      extensions: []
+    postgresql_users:
+    - name: zabbix
+      password: zabbix
+      state: present
+      role_attr_flags: CREATEDB,NOSUPERUSER
+      privileges:
+        - database: zabbix
+          privs: "ALL"
+          state: present
+      hosts: []

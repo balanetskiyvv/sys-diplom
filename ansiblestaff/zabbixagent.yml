@@ -1,0 +1,33 @@
+---
+- name: Install Zabbix Agent
+  hosts: webservers
+  become: yes
+  vars:
+    zabbix_server: 10.0.0.26
+
+  tasks:
+    - name: install zabbix agent
+      apt:
+        name: zabbix-agent
+        state: present
+        update-cache: yes
+
+    - name: create directory fo logs Zabbix agent
+      command: mkdir -p /var/log/zabbix
+      become_user: root
+
+    - name: install rules on logs directory
+      command: chown zabbix /var/log/zabbix/
+      become_user: root
+
+    - name: configure zabbix agent
+      template:
+        src: ./zabbix_agentd.conf.j2
+        dest: /etc/zabbix/zabbix_agentd.conf
+      notify: restart zabbix-agent
+    
+  handlers:
+    - name: restart zabbix-agent
+      service:
+        name: zabbix-agent
+        state: restarted
