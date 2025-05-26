@@ -270,10 +270,10 @@ zabbix_srv ansible_host=zabbix-server.ru-central1.internal
 
 Проверяем статус служб zabbix agent на web серверах
 
-WEB-1
+WEB-1  
 <img width="781" alt="изображение" src="https://github.com/user-attachments/assets/10aa0e99-e09b-428b-b274-8ef69e1ce906" />
 
-WEB-2
+WEB-2  
 <img width="784" alt="изображение" src="https://github.com/user-attachments/assets/77656d4e-0eb1-4d06-85dc-ed0878291f5f" />
 
 Добавляем хосты используя FQDN имена в zabbix сервер и настраиваем дашборды
@@ -318,12 +318,12 @@ WEB-2
 
 Проверяем статус filebeat на веб-серверах
 
-WEB-1
+WEB-1  
 <img width="1003" alt="изображение" src="https://github.com/user-attachments/assets/77340e0a-bb35-4a21-8ddc-9381cce29959" />
 
 <img width="999" alt="изображение" src="https://github.com/user-attachments/assets/6cde1cc9-559e-4e58-ace4-dad4e9697632" />
 
-WEB-2
+WEB-2  
 <img width="1004" alt="изображение" src="https://github.com/user-attachments/assets/143cf19a-3c71-47a4-b9cd-536ca81bd22d" />
 
 <img width="998" alt="изображение" src="https://github.com/user-attachments/assets/b0c4ce1d-9b2a-43ca-a147-6c2a541f0a3b" />
