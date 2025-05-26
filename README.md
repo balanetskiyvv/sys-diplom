@@ -1,4 +1,4 @@
-
+<img width="512" alt="изображение" src="https://github.com/user-attachments/assets/6e2c804f-c39a-4919-9127-794f4acae3bb" />
 # Дипломная работа по профессии «Системный администратор» - Василий Баланецкий
 
 # Содержание
@@ -112,7 +112,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 После завершения работы terraform проверяем в web консоли Yandex Cloud развернутую инфраструктуру.  
 Серверы WEB-1 и WEB-2 созданы в разных зонах.
 
-screen
+<img width="1625" alt="изображение" src="https://github.com/user-attachments/assets/cc02f90b-f224-4be9-84ee-589c99d0f6bb" />
 
 ### <a id="network">Сеть</a>
 **VPC и подсети**
@@ -172,11 +172,11 @@ screen
 
 для распределения трафика на веб-сервера. Указываем HTTP router, задаем listener тип AUTO, порт 80.
 
-<img width="715" alt="изображение" src="https://github.com/user-attachments/assets/1710b829-a3de-4db4-a626-356ddb4e3298" />
+<img width="982" alt="изображение" src="https://github.com/user-attachments/assets/2855fc8f-30e0-44b3-b880-a49467649ebc" />
 
 **Карта балансировки**
 
-<img width="1211" alt="изображение" src="https://github.com/user-attachments/assets/88aae47f-f463-4157-97f5-3809c76c4d4f" />
+<img width="1614" alt="изображение" src="https://github.com/user-attachments/assets/78c33fec-ef2e-4391-a756-5f18b5077012" />
 
 ### <a id="snapshots">Резервное копирование</a>
 
@@ -212,7 +212,7 @@ host_key_checking = False
 [all:vars]
 ansible_ssh_user=balanetskiyvv
 ansible_ssh_private_key_file=/Users/vasiliybalanetskiy/.ssh/id_ed25519
-ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q balanetskiyvv@158.160.33.144"'
+ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q balanetskiyvv@158.160.101.91"'
   
 [webservers]
 web-1 ansible_host=web-1.ru-central1.internal
@@ -238,15 +238,15 @@ zabbix_srv ansible_host=zabbix-server.ru-central1.internal
 
 проверяем доступность сайта в браузере по публичному ip адресу Load Balancer
 
-<img width="506" alt="изображение" src="https://github.com/user-attachments/assets/1ec95230-2559-4498-b141-78755720cf73" />
+<img width="512" alt="изображение" src="https://github.com/user-attachments/assets/569581a6-323e-4401-a4e0-99e0eadba3c9" />
 
 делаем запрос `curl -v http://158.160.186.208:80`
 
-<img width="876" alt="изображение" src="https://github.com/user-attachments/assets/95686229-ec90-4488-bd50-25b87251e7fd" />
+<img width="877" alt="изображение" src="https://github.com/user-attachments/assets/f5c92306-76bc-48ba-9be3-ea2dd27fb423" />
 
 проверяем работу Load Balancer в веб консоли YC, при изменении backend_ip убеждаемся что балансировщик работает
 
-<img width="741" alt="изображение" src="https://github.com/user-attachments/assets/ea3eb435-2c80-4823-91f9-b410c97a22b2" />
+<img width="1596" alt="изображение" src="https://github.com/user-attachments/assets/d0becdb5-9881-450f-9d4a-e1c67b9cb905" />
 
 ### <a id="zabbix">Мониторинг</a>
 
@@ -262,7 +262,7 @@ zabbix_srv ansible_host=zabbix-server.ru-central1.internal
 
 проверяем доступность frontend zabbix сервера
 
-<img width="1018" alt="изображение" src="https://github.com/user-attachments/assets/41bb84e9-1826-4b7a-bb64-de4eda1bd2ef" />
+<img width="1680" alt="изображение" src="https://github.com/user-attachments/assets/5891fa79-4886-4a0d-b48c-ff68da012685" />
 
 **Устанавливаем Zabbix agent на веб-серверы**
 
@@ -278,7 +278,7 @@ WEB-2
 
 Добавляем хосты используя FQDN имена в zabbix сервер и настраиваем дашборды
 
-<img width="1501" alt="изображение" src="https://github.com/user-attachments/assets/f1591dc7-63b2-4feb-92b5-2916354a34cb" />
+<img width="1501" alt="изображение" src="https://github.com/user-attachments/assets/b3b4b97d-8767-46dc-9175-5605c9c0d13e" />
 
 <img width="1485" alt="изображение" src="https://github.com/user-attachments/assets/d7d7cc61-7836-4514-a8da-fa8c98c7204e" />
 
